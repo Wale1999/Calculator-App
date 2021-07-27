@@ -22,21 +22,22 @@ body {
     height: 360px;
 }
 
-.history {
+.history p {
     text-align: right;
-    height: 15px;
+    height: 20px;
     margin: 10px 20px;
     padding: 20px;
-    font-size: 25px;
+    font-size: 20px;
     color: black;
 }
 
-.output {
+.output,
+.output-value {
     text-align: right;
     height: 50px;
-    padding-top: 5px;
+    padding-bottom: 5px;
     margin: 0px 20px;
-    font-size: 40px;
+    font-size: 35px;
 }
 
 .operator,

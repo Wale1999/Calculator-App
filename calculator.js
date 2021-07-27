@@ -1,12 +1,14 @@
 //for the history 
 function history() {
-    return document.getElementsByClassName('history-value').innerText;
+    return document.getElementsByClassName('history-value').innerText();
 };
+
 
 //for the history value
 function getHistory(number) {
-    return document.getElementsByClassName('history-value').innerText = number;
-};
+    document.getElementsByClassName('history-value').innerText = number;
+}
+
 
 //for the output 
 function outPut() {
@@ -18,15 +20,15 @@ function getOutput(number) {
     if (number == '') {
         document.getElementsByClassName('output-value').innerText = number;
     } else {
-        return document.getElementsByClassName('output-value').innerText = formattedNumber(number);
+        document.getElementsByClassName('output-value').innerText = formattedNumber(number);
     }
 
 
     //formatted number
     function formattedNumber() {
         var num = Number(number);
-        var value = number.localeString('en');
+        var value = num.localeString('en');
         return value;
     }
 
-    // Reverse our number
+    //     // Reverse our number
