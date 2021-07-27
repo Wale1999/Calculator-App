@@ -9,7 +9,7 @@ body {
     background-color: #fefae0;
     width: 360px;
     height: 550px;
-    margin: 50px auto;
+    margin: 20px auto;
     position: relative;
     border-radius: 15px;
 }
@@ -24,9 +24,9 @@ body {
 
 .history {
     text-align: right;
-    height: 3px;
-    margin: 0 25px;
-    padding-top: 20px;
+    height: 15px;
+    margin: 10px 20px;
+    padding: 20px;
     font-size: 25px;
     color: black;
 }
@@ -34,7 +34,8 @@ body {
 .output {
     text-align: right;
     height: 50px;
-    margin: 10px 20px;
+    padding-top: 5px;
+    margin: 0px 20px;
     font-size: 40px;
 }
 
@@ -93,6 +94,6 @@ button:nth-child(16) {
 }
 
 button:nth-child(20) {
-    background-color: ;
+    background-color: #48cae4;
     font-size: 22px;
 }
