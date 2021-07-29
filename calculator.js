@@ -1,56 +1,117 @@
-//for the history 
-function history() {
-    return document.getElementsByClassName('history-value').innerText;
-};
-
-
-//for the history value
-function getHistory(number) {
-    document.getElementsByClassName('history-value').innerText = number;
+//for the history
+function getHistory() {
+    return document.getElementsByClassName('history-value');
 }
 
-
-//for the output 
-function outPut() {
-    return document.getElementsByClassName('output-value').innerText;
+//history value
+function printHistory(num) {
+    document.getElementsByClassName('history-value').innerText;
 };
 
-//output value. This function helps us to 
-function getOutput(number) {
-    if (number == '') {
-        document.getElementsByClassName('output-value').innerText = number;
+//For the output
+function getOutput() {
+    return document.getElementsByClassName('output-value');
+}
+
+//Output value.
+function printOutput(num) {
+    if (num == "") {
+        document.getElementsByClassName('output-value').innerText = num;
     } else {
-        document.getElementsByClassName('output-value').innerText = formattedNumber(number);
+        document.getElementsByClassName('output-value').innerText = formattedNumber(num);
     }
 }
 
-//formatted number. This function helps us to return a comma within the value.
-function formattedNumber() {
-    var num = Number(number);
-    var value = num.localeString('en');
+//formatted number helps us to include commas in our calculator 
+function formattedNumber(num) {
+    if (num == '-') {
+        return '';
+    }
+    var n = Number(num);
+    var value = n.toLocaleString('en');
     return value;
 }
 
-
-//Reverse the format. This will help us replace the comma to an empty character
-
-function reverseNumber(number) {
+//reverse format to help the calculator go back when we click the backspace
+function reverseFormat(num) {
     return Number(num.replace(/,/g, ''));
 }
 
-//declaring the operator and their ID
+//declaring the variables and assigning them to the operator
 var operator = document.getElementsByClassName('operator');
-for (var i = 0; i < operator.length; i++) {
+for (let i = 0; i < operator.length; i++) {
     operator[i].addEventListener('click', function() {
-        alert('the operator click ' + this.id);
+        if (this.id == 'clear') {
+            printHistory("");
+            printOutput("");
+        } else if (this.id == 'backspace') {
+            var output = reverseFormat(getOutput).toString();
+            if (output) {
+                output = output.substr(0, output.length - 1);
+                printOutput(output);
+            }
+        } else {
+            var output = getOutput();
+            var history = getHistory();
+            if (output == '' && history != '') {
+                if (isNan(history[history.length - 1])) {
+                    hidtory = history.substr(0, history.length - 1);
+                }
+            }
+            if (outpus != "" || history != '') {
+                output = output == '' ? output : reverseFormat(output);
+                history = history + output;
+                if (output = '=') {
+                    var result = eval(history);
+                    printOutput(result);
+                    printHistory('');
+                } else {
+                    history = history + this.id;
+                    printHistory(history);
+                    printOutput('');
+                }
+            }
+
+        }
     })
+
 }
 
-//Declaring the variables for the numbers 
-
-var numbers = document.getElementsByClassName('number');
-for (var i = 0; i < numbers.length; i++) {
-    numbers[i].addEventListener('click', function() {
-        alert('the number you clicked is ' + this.id);
-    })
+//declaring our number variables
+var number = document.getElementsByClassName('number');
+for (var i = 0; i < number.length; i++) {
+    var output = reverseFormat(getOutput());
+    if (output != NaN) {
+        output = output.this.id;
+        printOutput(output);
+    }
 }
+
+// //declaring the operator and their ID
+// var operator = document.getElementsByClassName('operator');
+// for (var i = 0; i < operator.length; i++) {
+//     operator[i].addEventListener('click', function() {
+//         if (this.id == 'clear') {
+//             printHistory("");
+//             printOutput("");
+//         } else if (this.id == 'backspace') {
+//             let output = reverseNumber(getOutput).toString();
+//             if (output) {
+//                 output = output.substr(0, output.length - 1);
+//             }
+//         }
+
+//     })
+// }
+
+// //Declaring the variables for the numbers and making them work when clicked
+// var numbers = document.getElementsByClassName('number');
+// for (var i = 0; i < numbers.length; i++) {
+//     numbers[i].addEventListener('click', function() {
+//         var result = reverseNumber(outPut());
+//         if (result != NaN) {
+//             result = outPut + this.id;
+//             getOutput(result);
+//         }
+//     })
+// }
